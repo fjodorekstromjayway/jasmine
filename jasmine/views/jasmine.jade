@@ -1,0 +1,36 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='shortcut icon', type='image/png', href='javascripts/jasmine/lib/jasmine-1.2.0/jasmine_favicon.png')
+    link(rel='stylesheet', type='text/css', href='javascripts/jasmine/lib/jasmine-1.2.0/jasmine.css')
+    script(type='text/javascript', href='http://code.jquery.com/jquery-1.8.1.min.js')
+    script(type='text/javascript', src='javascripts/jasmine/lib/jasmine-1.2.0/jasmine.js')
+    script(type='text/javascript', src='javascripts/jasmine/lib/jasmine-1.2.0/jasmine-html.js')
+
+    script(type='text/javascript', src='javascripts/jasmine/spec/SpecHelper.spec.js')
+    script(type='text/javascript', src='javascripts/jasmine/spec/PlayerSpec.spec.js')
+
+    script(type='text/javascript', src='javascripts/jasmine/src/Player.js')
+    script(type='text/javascript', src='javascripts/jasmine/src/Song.js')
+    script(type='text/javascript')
+      (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+      var htmlReporter = new jasmine.HtmlReporter();
+      jasmineEnv.addReporter(htmlReporter);
+      jasmineEnv.specFilter = function(spec) {
+      return htmlReporter.specFilter(spec);
+      };
+      var currentWindowOnload = window.onload;
+      window.onload = function() {
+      if (currentWindowOnload) {
+      currentWindowOnload();
+      }
+      execJasmine();
+      };
+      function execJasmine() {
+      jasmineEnv.execute();
+      }
+      })();
+  body
