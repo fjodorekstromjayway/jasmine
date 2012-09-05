@@ -1,9 +1,7 @@
-extends layout
-
 block content
   h1= title
   p Welcome to #{title}
-  form(action='/pagetotest')
-    input(type='Submit', value='Navigate to AppX')
+  form(action='/')
+    input(type='Submit', value='Home')
   form(action='/jasmine')
     input(type='Submit', value='Run tests')
