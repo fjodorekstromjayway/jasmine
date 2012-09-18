@@ -5,7 +5,7 @@ describe("Hello World", function(){
 });
 
 describe("Person", function(){
-	it("calls the sayHello() function", function(){
+	it("calls the sayHello() function when calling the helloSomeone() function", function(){
 		var fakePerson = new Person();
 		spyOn(fakePerson, "sayHello");
 		fakePerson.helloSomeone("world");
@@ -20,35 +20,18 @@ describe("Person", function(){
 	});
 });
 
-describe("NewFunc", function(){
-	it("returns true if paramVal is 1", function(){
-		var fakeFunc = new newFunc();
-		spyOn(fakeFunc, 'sendTrueOrFalse');
-		fakeFunc.sendTrueOrFalse(1);
-		expect(fakeFunc.sendTrueOrFalse).toEqual(true);
+describe("sendTrueOrFalse", function(){
+	it("returns only true if paramVal is 1", function(){
+		expect(sendTrueOrFalse(1)).toEqual(true);
+		expect(sendTrueOrFalse(1)).not.toEqual(false);
 	});
-
-	it("returns false if paramVal is not 1", function(){
-		var fakeFunc = new newFunc();
-		var fakeParam = Math.floor(Math.random()*100)+1;
-		spyOn(fakeFunc, 'sendTrueOrFalse');
-		fakeFunc.sendTrueOrFalse(2);
-		expect(fakeFunc.sendTrueOrFalse).toEqual(false);
+	it("returns false if paramVal is 0", function(){
+		expect(sendTrueOrFalse(0)).toEqual(false);
+		expect(sendTrueOrFalse(0)).not.toEqual(true);
 	});
-
-	it("is called with the correct parameter", function(){
-		var fakeFunc = new newFunc();
-		spyOn(fakeFunc, "sendTrueOrFalse");
-		fakeFunc.sendTrueOrFalse("testaar");
-		expect(fakeFunc.sendTrueOrFalse).toHaveBeenCalledWith("testaar");
-		expect(fakeFunc.sendTrueOrFalse).not.toHaveBeenCalledWith("tes");
-	});
-
-	it("calls the sendTrueOrFalse method", function(){
-		var fakeFunc = new newFunc();
-		spyOn(fakeFunc, "sendTrueOrFalse");
-		fakeFunc.sendTrueOrFalse();
-		expect(fakeFunc.sendTrueOrFalse).toHaveBeenCalled();
+	it("returns false if paramVal is kalleStropp", function(){
+		expect(sendTrueOrFalse("kalleStropp")).toEqual(false);
+		expect(sendTrueOrFalse("kalleStropp")).not.toEqual(true);
 	});
 
 });

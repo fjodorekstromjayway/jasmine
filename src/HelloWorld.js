@@ -12,13 +12,11 @@ Person.prototype.sayHello = function(){
 	return "Hello";
 };
 
-var newFunc = function(){};
-
-newFunc.prototype.sendTrueOrFalse = function(paramVal){
+function sendTrueOrFalse(paramVal){
 	var result = true;
 	if(paramVal === 1){
 		result = true;
-	} else {
+	} else if(paramVal != 1) {
 		result = false;
 	}
 	return result;
